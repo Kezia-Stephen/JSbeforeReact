@@ -31,12 +31,62 @@ function addtoCart(id){
   console.log("Here is the items in the cart:", cartItems);
 };
 
-const btn = document.querySelector("button");
+// const btn = document.getElementsByClassName("btn");
 
-btn.addEventListener("click", function () {
-  addtoCart(1);
-});
+// btn.addEventListener("click", function () {
+//   addtoCart(1);
+// });
 
+addtoCart(1);
+
+
+const increment = (id) => {
+  const temp = cartItems.map((item)=> {
+    if(item.id === id){
+      return{
+        ...item,
+        qty: item.qty+1,
+      };
+    }
+    else return item;
+  });
+  console.log("temp value", temp);
+}
+
+
+// const btn1 = document.getElementsByClassName("btn1");
+
+// btn1.addEventListener("click", function () {
+//   increment(1);
+// });
+
+increment(1);
+
+
+const decrement = (id) => {
+  const selectedItem = cartItems.find((item)=> item.id === id)
+  if (selectedItem){
+    if (selectedItem.qty === 1){
+      const temp1 = cartItems.filter((item)=> item.id !== id);
+      console.log("temp1 value", temp1);
+    } 
+    else 
+    {
+      const temp1 = cartItems.map((item)=> {
+        if(item.id === id){
+          return{
+            ...item,
+            qty: item.qty-1,
+          };
+        }
+        else return item;
+      });
+      console.log("temp1 value", temp1);
+    }
+  } 
+}
+
+decrement(1);
 
 //var addtoCart = [];
 
